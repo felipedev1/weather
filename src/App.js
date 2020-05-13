@@ -30,9 +30,9 @@ export default function App() {
     }
   }, [cityKey])
 
-  async function getWeather(e) {
+  async function getCityKey(e) {
     e.preventDefault()
-    const urlLocale = `http://dataservice.accuweather.com/locations/v1/cities/search`
+    const urlLocale = `https://dataservice.accuweather.com/locations/v1/cities/search`
     const config = {
       params: {
         apikey: apiKey,
@@ -49,7 +49,7 @@ export default function App() {
   }
 
   function getWeatherNow() {
-    const urlWeather = `http://dataservice.accuweather.com/currentconditions/v1/${cityKey}`
+    const urlWeather = `https://dataservice.accuweather.com/currentconditions/v1/${cityKey}`
     const config = {
       params: {
         apikey: apiKey,
@@ -58,11 +58,17 @@ export default function App() {
     }
     axios.get(urlWeather, config)
       .then(res => setWeather(res.data[0]))
-      .catch(err => console.log(err))
+      .catch(err => {
+        if(err.status){
+          alert(err.data.Message)
+        } else {
+          alert('O número permitido de solicitações para a API foi excedido hoje. Tente novamente amanhã.\n\nThe allowed number of requests for the API has been exceeded today. Try again tomorrow.')
+        }
+      })
   }
 
   function getForecast() {
-    const urlForecast = `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}`
+    const urlForecast = `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}`
     const config = {
       params: {
         apikey: apiKey,
@@ -72,7 +78,13 @@ export default function App() {
     }
     axios.get(urlForecast, config)
       .then(res => setForecasts(res.data.DailyForecasts))
-      .catch(err => console.log(err))
+      .catch(err => {
+        if(err.status){
+          alert(err.data.Message)
+        } else {
+          alert('O número permitido de solicitações para a API foi excedido hoje. Tente novamente amanhã.\n\nThe allowed number of requests for the API has been exceeded today. Try again tomorrow.')
+        }
+      })
   }
 
 
@@ -97,7 +109,7 @@ export default function App() {
     <div className='App'>
 
       <div className="city-form">
-        <form onSubmit={(e) => getWeather(e)}>
+        <form onSubmit={(e) => getCityKey(e)}>
           <div className="form-group">
             <input type="text"
               className="form-control"
@@ -105,7 +117,7 @@ export default function App() {
               onChange={e => setCity(e.target.value)} />
           </div>
           <button className="btn btn-primary" type="submit">
-            Clique para ver o tempo no sua cidade
+            Clique para ver o tempo na sua cidade
             </button>
         </form>
         <div className="form-group ml-3">
