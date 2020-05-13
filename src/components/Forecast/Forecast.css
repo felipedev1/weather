@@ -1,0 +1,33 @@
+.card-day {
+  background-color: #ccc;
+  padding: 30px;
+  text-align: center;
+  overflow: hidden;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0.5rem 1.3rem rgba(0, 0, 0, 0.5);
+}
+
+.card-day p {
+  font-size: 1.5rem;
+  margin: 3px;
+}
+
+.card-day hr {
+  margin: 5px;
+}
+
+@media(max-width: 780px) {
+  .card-day {
+    padding: 9px;
+    margin: 15px 10px 5px 10px;
+  }
+
+  .card-day p {
+    font-size: 1rem;
+  }
+
+  .card-day img {
+    width: 45px;
+  }
+}

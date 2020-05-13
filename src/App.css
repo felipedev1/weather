@@ -1,34 +1,22 @@
 .App {
-  text-align: center;
+  min-height: 100%;
+  background-color: #eee;
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+}
+
+.city-form {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.forecasts {
   height: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.App h1 {
-  color: white;
-  font-size: 5rem;
-  margin: 0;
-}
-
-.content {
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.temperature-now {
-  font-size: 10rem;
-}
-
-.temperature-now {
-  color: orangered;
-}
-
-.info {
-  font-size: 2rem;
+  flex-wrap: wrap;
 }
