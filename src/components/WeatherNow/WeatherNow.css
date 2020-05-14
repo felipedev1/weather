@@ -1,4 +1,4 @@
-.weather-now h2{
+.weather-now h2 {
   text-align: center;
   font-size: 4rem;
   color: white;
@@ -6,14 +6,14 @@
 
 .bg-day {
   background: #076585;
-  background: -webkit-linear-gradient(to right, skyblue, #076585); 
-  background: linear-gradient(to right, skyblue, #076585); 
+  background: -webkit-linear-gradient(to right, skyblue, #076585);
+  background: linear-gradient(to right, skyblue, #076585);
 }
 
 .bg-night {
   background: #000;
-  background: -webkit-linear-gradient(to right, #434343, #121212); 
-  background: linear-gradient(to right, #434343, #121212); 
+  background: -webkit-linear-gradient(to right, #434343, #121212);
+  background: linear-gradient(to right, #434343, #121212);
 }
 
 .weather-content {
@@ -23,9 +23,14 @@
   justify-content: center;
 }
 
-
 .weather-content span {
   font-size: 6rem;
+}
+
+@media (max-width: 500px) {
+  .weather-content span {
+    font-size: 5rem;
+  }
 }
 
 .weather-content .info {
